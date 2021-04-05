@@ -25,17 +25,37 @@ type Props = {
 type ExcludesFalse = <T>(x: T | null | undefined | false) => x is T;
 
 export function Characters({ }: Props): JSX.Element {
-  // TODO meðhöndla loading state, ekki þarf sérstaklega að villu state
   const [loading, setLoading] = useState<boolean>(false);
 
-  // TODO setja grunngögn sem koma frá server
   const [characters, setCharacters] = useState<Array<ICharacter>>([]);
 
   const [nextPage, setNextPage] = useState<string | null>(null);
+  const [hasNextPage, setHasNextPage] = useState<string | null>(null);
+
+  let startCursor: React.SetStateAction<string | null>;
+
+  const apiUrl = `api/characters?after=${nextPage}`;
 
   const fetchMore = async (): Promise<void> => {
-    // TODO sækja gögn frá /pages/api/characters.ts (gegnum /api/characters), ef það eru fleiri
-    // (sjá pageInfo.hasNextPage) með cursor úr pageInfo.endCursor
+    setLoading(true);
+    let json;
+    if (!hasNextPage) setNextPage(startCursor);
+
+    try {
+      const result = await fetch(apiUrl);
+      if (!result.ok) {
+        throw new Error('result not ok');
+      }
+      json = await result.json();
+    } catch (e) {
+      return;
+    } finally {
+      setLoading(false);
+    }
+    setCharacters(json.allPeople.people);
+    if (!startCursor) startCursor = json.allPeople.pageInfo.startCursor;
+    setNextPage(json.allPeople.pageInfo.endCursor);
+    if (hasNextPage) setHasNextPage(json.allPeople.pageInfo.endCursor.hasNextPage);
   };
 
   return (

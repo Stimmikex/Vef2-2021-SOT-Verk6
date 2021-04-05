@@ -3,7 +3,11 @@
 export interface ICharacter {
   id: string;
   name?: string;
-  // TODO fleiri týpur
+  birthYear?: string;
+  hairColor?: string;
+  eyeColor?: string;
+  height?: number;
+  mass?: number;
 }
 
 // TODO hér ættum við að útbúa interface fyrir öll gögn sem við vinnum með (t.d. IFilm, IPaging)
