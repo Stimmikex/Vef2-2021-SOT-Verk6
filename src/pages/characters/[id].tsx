@@ -38,10 +38,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params
   const id = params?.id as string | undefined;
 
   const query = `
-    query($id: ID!) {
-      # TODO sækja person
+  query($id: ID!) {
+    person(id: $id){
+      ...character
     }
-    ${characterFragment}
+  }
+  ${characterFragment}
   `;
 
   let person = null;

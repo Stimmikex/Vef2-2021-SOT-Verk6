@@ -45,9 +45,17 @@ export async function fetchCharacters(after = ''): Promise<any> {
   // Höldum query hér til að geta séð hvernig við erum að sækja
   // Nákvæmlega hvað við sækjum per character er skilgreint í fragmenti
   const query = `
-    query($after: String = "") {
-      # TODO query
+  query($after: String = "") {
+    allPeople(after: $after, first: 10) {
+      people {
+       ...character
+      }
+      pageInfo {
+        startCursor
+        endCursor
+      }
     }
+  }
     ${characterFragment}
   `;
 
