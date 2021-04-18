@@ -10,5 +10,26 @@ export interface ICharacter {
   mass?: number;
 }
 
-// TODO hér ættum við að útbúa interface fyrir öll gögn sem við vinnum með (t.d. IFilm, IPaging)
-// og svör sem við fáum frá GraphQL endapunkti
+export interface IPeopleResponse {
+  id: string;
+  name?: string;
+}
+
+export interface IAllFilms {
+  allFilms: any;
+  films: Array<IFilm>;
+
+}
+
+export interface IFilm {
+  characterConnection: { characters: Array<ICharacter>; };
+  episodeID: number;
+  title?: string;
+  openingCrawl?: string;
+  characters?: Array<ICharacter>;
+}
+
+export interface IPaging {
+  id: string;
+  name?: string;
+}

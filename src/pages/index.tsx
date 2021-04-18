@@ -6,7 +6,7 @@ import { Film } from '../components/film/Film';
 import { Layout } from '../components/layout/Layout';
 import { characterFragment } from '../graphql/characterFragment';
 import { fetchSwapi } from '../lib/swapi';
-import { IFilm } from '../types';
+import { IFilm, IAllFilms } from '../types';
 
 export type PageProps = {
   films: Array<IFilm> | null;
@@ -54,7 +54,7 @@ const query = `
 `;
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
-  const allfilms = await fetchSwapi<any>(query); // TODO EKKI any
+  const allfilms = await fetchSwapi<IAllFilms>(query); // TODO EKKI any
   const { films } = allfilms.allFilms;
   return {
     props: {
