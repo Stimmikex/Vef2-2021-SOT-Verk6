@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async ({ params
 
   if (id) {
     // TODO EKKI any
-    const result = await fetchSwapi<any>(query, { id });
+    const result = await fetchSwapi<ICharacter>(query, { id });
 
     person = result.person ?? null;
   }

@@ -17,9 +17,9 @@ export function Person({ person }: Props): JSX.Element {
       <b>Hair color: </b>
       <p>{person.hairColor}</p>
       <b>Height: </b>
-      <p>{person.height}</p>
+      <p>{person.height} cm</p>
       <b>Mass: </b>
-      <p>{person.mass}</p>
+      <p>{person.mass} kg</p>
       <Link href="/characters">Back to characters</Link>
     </div>
   );

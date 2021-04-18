@@ -13,14 +13,14 @@ export function Film({ film }: Props): JSX.Element {
       <h2 className={s.film__title}>
         {`Episode ${film.episodeID}: ${film.title}`}
       </h2>
-      <div>
-        <div>{film.openingCrawl}</div>
-        <div>
+      <div className={s.film__summary}>
+        <pre className={s.film__openingCrawl}>{film.openingCrawl}</pre>
+        <div className={s.film__characters}>
           <h2>Characters</h2>
-          <ul>
+          <ul className={s.film__characterList}>
             {
               film.characterConnection.characters.map((character:ICharacter) => (
-                <li key={character.id}>
+                <li key={character.id} className={s.film__characterListItem}>
                   <Link href={`/characters/${character.id}`}>{character.name}</Link>
                 </li>
               ))

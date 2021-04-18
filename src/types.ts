@@ -1,6 +1,7 @@
 // Hér eru þær týpur sem við skilgreinum á móti GraphQL endapunkti
 
 export interface ICharacter {
+  person: null;
   id: string;
   name?: string;
   birthYear?: string;
@@ -16,6 +17,7 @@ export interface IPeopleResponse {
 }
 
 export interface IAllFilms {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allFilms: any;
   films: Array<IFilm>;
 

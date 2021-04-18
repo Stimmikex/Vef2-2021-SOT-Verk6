@@ -42,6 +42,7 @@ export function Characters(): JSX.Element {
 
   useEffect(() => {
     fetchMore();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (loading) {
     return <p>Fetching Data...</p>;

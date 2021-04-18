@@ -11,7 +11,7 @@ export function Layout({ children }: Props): JSX.Element {
     <div className={s.layout}>
       <Link href="/">Films</Link>
       <Link href="/characters">Characters</Link>
-      <main>{children}</main>
+      <main className={s.layout__list}>{children}</main>
     </div>
   );
 }
