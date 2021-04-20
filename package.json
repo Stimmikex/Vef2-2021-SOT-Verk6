@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $REACT_PORT",
+    "start": "next start -p 5000",
     "lint": "eslint ./src"
   },
   "dependencies": {
